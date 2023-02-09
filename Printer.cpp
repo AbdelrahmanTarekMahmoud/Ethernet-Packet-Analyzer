@@ -23,6 +23,7 @@ void Printer::PrinteCPRI(eCPRI EnhancedObject, int indexOfThePacket, std::string
 	MyFile << "CRC : " << EnhancedObject.GetCRC() << std::endl;
 	MyFile << "Destination Address : " << EnhancedObject.GetDestinationAddress() << std::endl;
 	MyFile << "Source Address : " << EnhancedObject.GetSourceAddress() << std::endl;
+	MyFile << "Type:   " << EnhancedObject.GetType() << std::endl;
 	MyFile << "ConcatenationIndicator:   " << EnhancedObject.GetConcatenationIndicator() << std::endl;
 	MyFile << "MessageType:   " << EnhancedObject.GetMessageType() << std::endl;
 	MyFile << "ProtocolVersion:   " << EnhancedObject.GetProtocolVersion() << std::endl;

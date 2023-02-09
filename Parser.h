@@ -20,11 +20,11 @@ using namespace std;
 #define Protocol_Version_Index 44
 #define Concatenation_Indicator_Index 45
 #define MessageTypeIndex 46
-#define PayloadSizeInext 48
+#define Payload_index 48
 #define PayloadSize_bits 4
-#define RTC_IDSizeInext 52
+#define RTC_ID_index 52
 #define RTC_IDSize_bits 4
-#define Sequence_IDInext 56
+#define Sequence_ID_index 56
 #define Sequence_ID_bits 4
 #define CRC_bits 8
 #define Destination_Address_index 16

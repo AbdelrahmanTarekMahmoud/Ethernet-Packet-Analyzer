@@ -15,9 +15,7 @@ int main()
 	std::vector<std::string> Result;
 	Reader reader;
 	Result = reader.read("input_packets.txt");
-	std::cout << reader.Input.size() << std::endl;
 	Parser parser(Result);
-	std::cout << parser.NumberOfPackets << std::endl;
 	parser.Parse();
 	return 0;
 }

@@ -5,7 +5,7 @@ std::vector<std::string> Reader::read(std::string Path)
 	std::ifstream inputFile(Path);
 	if (inputFile)
 	{
-		std::cout << "done" << std::endl;
+		std::cout << "File Opened Successfully" << std::endl;
 	}
 	while (getline(inputFile, line))
 	{

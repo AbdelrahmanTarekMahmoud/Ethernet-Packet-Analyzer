@@ -9,7 +9,7 @@ Parser::Parser(std::vector<std::string> input)
 
 void Parser::Parse()
 {
-	for (int i = 0; i <Input.size(); i++)
+	for (int i = 0; i < Input.size(); i++)
 	{
 		std::string Packet = Input[i];
 		Type = GetType(Packet);
@@ -17,7 +17,6 @@ void Parser::Parse()
 		if (Type == eCPRI_Type)
 		{
 			Parse_eCPRI(Packet, indexOfThePacket);
-
 		}
 		else if (Type == RawEhternetFrame_Type)
 		{
@@ -62,7 +61,7 @@ void Parser::Parse_RawEthernetFrames(std::string Packet, int indexOfThePacket)
 	}
 	// parsing Destination Address
 	std::string Source_Address;
-	for (int i = Source_Address_index; i < (Source_Address_bits + Source_Address_index ); i++)
+	for (int i = Source_Address_index; i < (Source_Address_bits + Source_Address_index); i++)
 	{
 		Source_Address += Packet[i];
 	}
@@ -70,7 +69,6 @@ void Parser::Parse_RawEthernetFrames(std::string Packet, int indexOfThePacket)
 	r.SetSourceAddress(Source_Address);
 	r.SetDestinationAddress(Destination_Address);
 	r.SetType(Type);
-	REF[indexOfThePacket] = r;
 	printer.PrintRawEthernetFrame(r, indexOfThePacket, Packet, "Output.txt");
 
 }
@@ -78,9 +76,6 @@ void Parser::Parse_RawEthernetFrames(std::string Packet, int indexOfThePacket)
 void Parser::Parse_eCPRI(std::string Packet, int indexOfThePacket)
 {
 	eCPRI e;
-
-
-
 	std::string CRC;
 	int last_Packet_Index = Packet.length();
 
@@ -100,43 +95,39 @@ void Parser::Parse_eCPRI(std::string Packet, int indexOfThePacket)
 	{
 		Source_Address += Packet[i];
 	}
-	e.SetCRC(CRC);
-	e.SetSourceAddress(Source_Address);
-	e.SetDestinationAddress(Destination_Address);
-	e.SetType(Type);
-
-
-
-
 
 	char ProtocolVersion = Packet[Protocol_Version_Index];
-	char ConcatenationIndicator =  Packet[Concatenation_Indicator_Index];
-	std::string MessageType = Packet[MessageTypeIndex] + Packet[MessageTypeIndex + 1];
+	char ConcatenationIndicator = Packet[Concatenation_Indicator_Index];
+	std::string MessageType = std::string(1, Packet[MessageTypeIndex]) + std::string(1, Packet[MessageTypeIndex + 1]);
 
 	std::string PayloadSize;
-	for (int i = 0; i < PayloadSize_bits; i++)
+	for (int i = Payload_index; i < (PayloadSize_bits + Payload_index); i++)
 	{
 		PayloadSize += Packet[i];
 	}
 	std::string RTC_ID;
-	for (int i = 0; i < RTC_IDSize_bits; i++)
+	for (int i = RTC_ID_index; i < (RTC_IDSize_bits + RTC_ID_index); i++)
 	{
 		RTC_ID += Packet[i];
 	}
 	std::string Sequence_ID;
-	for (int i = 0; i < Sequence_ID_bits; i++)
+	for (int i = Sequence_ID_index; i < (Sequence_ID_bits + Sequence_ID_index); i++)
 	{
 		Sequence_ID += Packet[i];
 	}
 
+	e.SetCRC(CRC);
+	e.SetSourceAddress(Source_Address);
+	e.SetDestinationAddress(Destination_Address);
+	e.SetType(Type);
 	e.SetProtocolVersion(ProtocolVersion);
 	e.SetConcatenationIndicator(ConcatenationIndicator);
 	e.SetMessageType(MessageType);
 	e.SetPayloadSize(PayloadSize);
 	e.SetRTC_ID(RTC_ID);
 	e.SetSequence_ID(Sequence_ID);
-	//REF[indexOfThePacket] = e;
-	printer.PrinteCPRI(e,indexOfThePacket, Packet, "Output.txt");
+
+	printer.PrinteCPRI(e, indexOfThePacket, Packet, "Output.txt");
 
 
 }
