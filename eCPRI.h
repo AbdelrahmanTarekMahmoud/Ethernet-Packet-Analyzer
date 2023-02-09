@@ -4,22 +4,22 @@
 class eCPRI : public RawEhternetFrame
 {
 private:
-	std::string ConcatenationIndicator;
+	char ConcatenationIndicator;
 	std::string MessageType;
 	std::string PayloadSize;
-	std::string ProtocolVersion;
+	char ProtocolVersion;
 	std::string RTC_ID;
 	std::string Sequence_ID;
 public:
 	eCPRI();
-	std::string GetConcatenationIndicator();
-	void SetConcatenationIndicator(std::string ConcatenationIndicator);
+	char GetConcatenationIndicator();
+	void SetConcatenationIndicator(char ConcatenationIndicator);
 	std::string GetMessageType();
 	void SetMessageType(std::string MessageType);
 	std::string GetPayloadSize();
 	void SetPayloadSize(std::string PayloadSize);
-	std::string GetProtocolVersion();
-	void SetProtocolVersion(std::string ProtocolVersion);
+	char GetProtocolVersion();
+	void SetProtocolVersion(char ProtocolVersion);
 	std::string GetRTC_ID();
 	void SetRTC_ID(std::string RTC_ID);
 	std::string GetSequence_ID();

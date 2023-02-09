@@ -8,6 +8,7 @@
 #include "Reader.h"
 #include "RawEthernetFrame.h"
 #include "eCPRI.h"
+#include "Printer.h"
 using namespace std;
 
 #define TypeIndexOne   40
@@ -42,6 +43,7 @@ private:
 	std::vector<std::string> Input;
 	//std::vector<RawEhternetFrame *> REF;
 	RawEhternetFrame REF[100];
+	Printer printer;
 public:
 	int NumberOfPackets;
 

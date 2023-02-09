@@ -4,19 +4,19 @@ eCPRI::eCPRI()
 {
 }
 
-std::string eCPRI::GetConcatenationIndicator()
+char eCPRI::GetConcatenationIndicator()
 {
-	return std::string();
+	return  ConcatenationIndicator;
 }
 
-void eCPRI::SetConcatenationIndicator(std::string ConcatenationIndicator)
+void eCPRI::SetConcatenationIndicator(char ConcatenationIndicator)
 {
 	this->ConcatenationIndicator = ConcatenationIndicator;
 }
 
 std::string eCPRI::GetMessageType()
 {
-	return std::string();
+	return MessageType;
 }
 
 void eCPRI::SetMessageType(std::string MessageType)
@@ -26,7 +26,7 @@ void eCPRI::SetMessageType(std::string MessageType)
 
 std::string eCPRI::GetPayloadSize()
 {
-	return std::string();
+	return PayloadSize;
 }
 
 void eCPRI::SetPayloadSize(std::string PayloadSize)
@@ -34,19 +34,19 @@ void eCPRI::SetPayloadSize(std::string PayloadSize)
 	this->PayloadSize = PayloadSize;
 }
 
-std::string eCPRI::GetProtocolVersion()
+char eCPRI::GetProtocolVersion()
 {
-	return std::string();
+	return ProtocolVersion;
 }
 
-void eCPRI::SetProtocolVersion(std::string ProtocolVersion)
+void eCPRI::SetProtocolVersion(char ProtocolVersion)
 {
 	this->ProtocolVersion = ProtocolVersion;
 }
 
 std::string eCPRI::GetRTC_ID()
 {
-	return std::string();
+	return RTC_ID;
 }
 
 void eCPRI::SetRTC_ID(std::string RTC_ID)
@@ -56,7 +56,7 @@ void eCPRI::SetRTC_ID(std::string RTC_ID)
 
 std::string eCPRI::GetSequence_ID()
 {
-	return std::string();
+	return Sequence_ID;
 }
 
 void eCPRI::SetSequence_ID(std::string Sequence_ID)
